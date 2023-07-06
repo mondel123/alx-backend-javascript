@@ -1,15 +1,15 @@
 def canUnlockAll(boxes):
-    num_boxes = len(boxes)
-    unlocked_boxes = [False] * num_boxes
-    unlocked_boxes[0] = True
+    n = len(boxes)
+    unlocked = [False] * n
+    unlocked[0] = True  # The first box is initially unlocked
+    keys = [0]  # Start with the keys from the first box
 
-    keys = [0]
     while keys:
         box = keys.pop()
         for key in boxes[box]:
-            if key < num_boxes and not unlocked_boxes[key]:
-                unlocked_boxes[key] = True
+            if key < n and not unlocked[key]:
+                unlocked[key] = True
                 keys.append(key)
 
-    return all(unlocked_boxes)
+    return all(unlocked)
 
