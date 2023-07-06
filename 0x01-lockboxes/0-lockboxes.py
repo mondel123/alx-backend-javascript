@@ -1,15 +1,18 @@
+from collections import deque
+
 def canUnlockAll(boxes):
-    n = len(boxes)
-    unlocked = [False] * n
-    unlocked[0] = True  # The first box is initially unlocked
-    keys = [0]  # Start with the keys from the first box
+    num_boxes = len(boxes)
+    visited = set()
+    queue = deque([0])  # Start with box 0
 
-    while keys:
-        box = keys.pop()
-        for key in boxes[box]:
-            if key < n and not unlocked[key]:
-                unlocked[key] = True
-                keys.append(key)
+    while queue:
+        current_box = queue.popleft()
+        visited.add(current_box)
 
-    return all(unlocked)
+        # Check the keys in the current box
+        for key in boxes[current_box]:
+            if key not in visited and key < num_boxes:
+                queue.append(key)
+
+    return len(visited) == num_boxes
 
