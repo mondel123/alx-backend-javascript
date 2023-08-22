@@ -2,7 +2,7 @@
  * Checks if a set contains each element in an array.
  * @param {Set} set - The collection of unique items.
  * @param {*} array - The array of items.
- * @author Adams Sedenu <https://github.com/mondel123>
+ * @author Bezaleel Olakunori <https://github.com/B3zaleel>
  * @returns {Boolean}
  */
 export default function hasValuesFromArray(set, array) {
